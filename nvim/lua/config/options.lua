@@ -73,3 +73,6 @@ vim.opt.undofile = true  -- 等同于 set undofile
 
 -- 指定撤销文件存储目录
 vim.opt.undodir = os.getenv("HOME") .. "/config/nvim/undodir"
+
+-- 始终显示 signcolumn，防止文本移动
+vim.opt.signcolumn = "yes"
