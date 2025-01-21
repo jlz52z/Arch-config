@@ -6,3 +6,5 @@ vim.g.maplocalleader = "\\"
 require("config.lazy")
 require("config.keymappings")
 require("config.options")
+-- set custom theme
+-- require("config.custom_theme.wallbash")

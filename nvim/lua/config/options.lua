@@ -39,7 +39,7 @@ set.scrolloff = 8           -- 光标移动时，保持顶部和底部的间距
 set.sidescrolloff = 8       -- 左右滚动时保持间距
 
 -- 主题设置
-vim.cmd.colorscheme "tokyonight"
+vim.cmd.colorscheme "tokyonight-moon"
 
 -- 自动为 Python 环境安装 pynvim
 local function ensure_pynvim_installed()
@@ -76,3 +76,10 @@ vim.opt.undodir = os.getenv("HOME") .. "/config/nvim/undodir"
 
 -- 始终显示 signcolumn，防止文本移动
 vim.opt.signcolumn = "yes"
+
+-- 开启 Folding
+vim.wo.foldmethod = 'expr'
+vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
+-- 默认不要折叠
+-- https://stackoverflow.com/questions/8316139/how-to-set-the-default-to-unfolded-when-you-open-a-file
+vim.wo.foldlevel = 99
