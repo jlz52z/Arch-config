@@ -138,6 +138,14 @@ export FORCE_THEME_UPDATE=true
 
 export MANPAGER='nvim +Man!'
 
+nvim() {
+    if [[ $1 == "sudo" ]]; then
+        command sudo -E nvim "${@:2}"
+    else
+        command nvim "$@"
+    fi
+}
+
 ## ---------------------------------------------------
 ## >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
