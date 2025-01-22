@@ -1,0 +1,5 @@
+
+- Rename current window 
+
+`<Prefix> ,`
+

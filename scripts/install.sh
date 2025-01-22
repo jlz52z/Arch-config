@@ -81,6 +81,11 @@ install_hyde() {
 install_git() {
     create_link "$CONFIG_ROOT/git/.gitconfig" "$HOME/.gitconfig"
 }
+install_tldr() {
+    # if tealdeer is not installed, then installed it
+    create_link "$CONFIG_ROOT/tealdeer/config.toml" "$HOME/.config/tealdeer/config.toml"
+    create_link "$CONFIG_ROOT/tealdeer/pages" "$HOME/.local/share/tealdeer/pages"
+}
 # 主安装流程
 main() {
     install_nvim
@@ -89,6 +94,7 @@ main() {
     install_kitty
     install_hyde
     install_git
+    install_tldr
 }
 
 
