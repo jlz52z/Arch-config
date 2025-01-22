@@ -78,6 +78,9 @@ install_kitty() {
 install_hyde() {
     create_link "$CONFIG_ROOT/Hyde/userprefs.conf" "$HOME/.config/hypr/userprefs.conf"
 }
+install_git() {
+    create_link "$CONFIG_ROOT/git/.gitconfig" "$HOME/.gitconfig"
+}
 # 主安装流程
 main() {
     install_nvim
@@ -85,6 +88,7 @@ main() {
     install_tmux
     install_kitty
     install_hyde
+    install_git
 }
 
 
