@@ -97,7 +97,7 @@ install_fcitx5() {
 }
 # 主安装流程
 main() {
-    pacman -S ripgrep fzf zoxide cmake python-pynvim git-delta
+    pacman -S ripgrep fzf zoxide cmake python-pynvim git-delta bat fd
     install_nvim
 #   install_zsh
     install_tmux
