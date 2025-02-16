@@ -86,6 +86,10 @@ install_tldr() {
     create_link "$CONFIG_ROOT/tealdeer/config.toml" "$HOME/.config/tealdeer/config.toml"
     create_link "$CONFIG_ROOT/tealdeer/pages" "$HOME/.local/share/tealdeer/pages"
 }
+install_fcitx5() {
+    create_link "$CONFIG_ROOT/fcitx5/rime/default.custom.yaml" "$HOME/.local/share/fcitx5/rime/default.custom.yaml"
+    create_link "$CONFIG_ROOT/fcitx5/rime/rime_ice.custom.yaml" "$HOME/.local/share/fcitx5/rime/rime_ice.custom.yaml"
+}
 # 主安装流程
 main() {
     install_nvim
@@ -95,6 +99,7 @@ main() {
     install_hyde
     install_git
     install_tldr
+    install_fcitx5
 }
 
 

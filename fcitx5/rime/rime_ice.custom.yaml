@@ -1,0 +1,30 @@
+# ~/.config/fcitx5/rime/default.custom.yaml
+patch:
+  app_options:
+    alacritty:      # 针对 Alacritty 终端
+      ascii_mode: true
+      no_inline: true
+    kitty:          # 针对 Kitty 终端
+      ascii_mode: true
+      no_inline: true
+    xterm:          # 针对 xterm
+      ascii_mode: true
+      no_inline: true
+    urxvt:          # 针对 urxvt
+      ascii_mode: true
+      no_inline: true
+    "org.gnome.Terminal":  # GNOME 终端
+      ascii_mode: true
+      no_inline: true
+    konsole:        # KDE Konsole
+      ascii_mode: true
+      no_inline: true
+    vim:            # Vim 编辑器
+      ascii_mode: true
+      no_inline: true
+      vim_mode: true
+    neovim:         # Neovim
+      ascii_mode: true
+      no_inline: true
+      vim_mode: true
+
