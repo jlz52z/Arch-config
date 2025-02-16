@@ -15,8 +15,8 @@ return {
     config = function()
         local builtin = require("telescope.builtin")
         vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
-        vim.keymap.set('n', '<leader>ts', ':Telescope tmux sessions<CR>',{ desc = "Tmux Sessions" })
-        vim.keymap.set('n', '<leader>tw', ':Telescope tmux windows<CR>',{ desc = "Tmux Windows" })
+        vim.keymap.set("n", "<leader>ts", ":Telescope tmux sessions<CR>", { desc = "Tmux Sessions" })
+        vim.keymap.set("n", "<leader>tw", ":Telescope tmux windows<CR>", { desc = "Tmux Windows" })
         vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find Files" })
         vim.keymap.set(
             "n",
@@ -123,7 +123,7 @@ return {
 
         require("telescope").load_extension("fzf")
 
-        require('telescope').load_extension('tmux')
+        require("telescope").load_extension("tmux")
 
         vim.g.zoxide_use_select = true
 

@@ -7,6 +7,7 @@ CONFIG_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 create_link() {
     local src="$1"
     local dest="$2"
+    mkdir -p "$dest"
     if [ -e "$dest" ]; then
         mv "$dest" "${dest}.backup"
     fi
@@ -35,9 +36,11 @@ install_tmux() {
         
         # 检查 git 是否安装
         if ! command -v git >/dev/null 2>&1; then
+	
             echo "Error: git is not installed"
             return 1
-        }
+	fi
+        
         
         # 创建父目录
         mkdir -p "$HOME/.tmux/plugins"
@@ -68,8 +71,10 @@ install_tmux() {
     ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 
     # 重新加载配置并自动安装插件
-    tmux source ~/.tmux.conf
+    tmux source ~/.tmux.conf || tmux source-file ~/.tmux.conf
+
 }
+
 
 install_kitty() {
     create_link "$CONFIG_ROOT/kitty" "$HOME/.config/kitty"
@@ -92,10 +97,11 @@ install_fcitx5() {
 }
 # 主安装流程
 main() {
+    pacman -S ripgrep fzf zoxide cmake python-pynvim git-delta
     install_nvim
-    install_zsh
+#   install_zsh
     install_tmux
-    install_kitty
+#   install_kitty
     install_hyde
     install_git
     install_tldr
