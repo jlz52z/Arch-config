@@ -165,6 +165,7 @@ alias cdf='cd "$(find . -type d | fzf --preview "ls -l {}")"'
 
 # Set up zoxide
 eval "$(zoxide init zsh)"
+alias nano='nvim'
 
 ## ---------------------------------------------------
 ## >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
