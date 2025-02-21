@@ -16,7 +16,10 @@ return {
         require("nvim-tree").setup({
             update_focused_file = {
                 enable = true, -- 启用高亮当前文件
-                update_cwd = true, -- 更新当前工作目录
+                update_cwd = false, -- 更新当前工作目录
+            },
+            git = {
+                enable = false, -- 临时禁用git忽略规则
             },
             view = {
                 width = 30,
