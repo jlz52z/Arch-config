@@ -38,8 +38,6 @@ set.termguicolors = true    -- 启用 24 位 RGB 色彩支持
 set.scrolloff = 8           -- 光标移动时，保持顶部和底部的间距
 set.sidescrolloff = 8       -- 左右滚动时保持间距
 
--- 主题设置
-vim.cmd.colorscheme "tokyonight-moon"
 
 -- 自动为 Python 环境安装 pynvim
 local function ensure_pynvim_installed()
@@ -83,3 +81,4 @@ vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
 -- 默认不要折叠
 -- https://stackoverflow.com/questions/8316139/how-to-set-the-default-to-unfolded-when-you-open-a-file
 vim.wo.foldlevel = 99
+
