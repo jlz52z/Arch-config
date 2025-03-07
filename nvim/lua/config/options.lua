@@ -82,3 +82,8 @@ vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
 -- https://stackoverflow.com/questions/8316139/how-to-set-the-default-to-unfolded-when-you-open-a-file
 vim.wo.foldlevel = 99
 
+-- 开启自动保存
+vim.api.nvim_create_autocmd({"InsertLeave", "TextChanged"}, {
+  pattern = "*",
+  command = "silent! write",
+})

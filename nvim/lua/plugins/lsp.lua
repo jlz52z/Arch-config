@@ -10,7 +10,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "ts_ls", "clangd", "pyright", },
+                ensure_installed = { "lua_ls", "ts_ls", "clangd", "pyright" },
             })
         end,
     },
@@ -103,6 +103,21 @@ return {
             --        },
             --      })
             require("lspsaga").setup({})
+            -- 在 lspsaga 配置中添加：
+            -- require("lspsaga").setup({
+            --     finder = {
+            --         keys = {
+            --             toggle_or_open = "o", -- 原跳转键
+            --             vsplit = "v",
+            --             split = "s",
+            --             tabe = "t",
+            --             quit = "q",
+            --             -- quit = "<ESC>" -- 将ESC键设置为退出finder窗口
+            --             -- 覆盖 Enter 行为
+            --             shuttle = "<cr>", -- 新增此行
+            --         },
+            --     },
+            -- })
         end,
     },
 }

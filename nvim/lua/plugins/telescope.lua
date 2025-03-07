@@ -30,6 +30,7 @@ return {
             '<cmd>lua require("telescope.builtin").live_grep({ glob_pattern = "!{spec,test}"})<CR>',
             { desc = "Live Grep Code" }
         )
+        vim.keymap.set("n", "<leader>fj", builtin.jumplist, { desc = "Find Jumplist" })
         vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find Buffers" })
         vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Find Help Tags" })
         vim.keymap.set("n", "<leader>fs", builtin.lsp_document_symbols, { desc = "Find Symbols" })
