@@ -12,7 +12,7 @@
   "flash.nvim": { "branch": "main", "commit": "34c7be146a91fec3555c33fe89c7d643f6ef5cf1" },
   "friendly-snippets": { "branch": "main", "commit": "efff286dd74c22f731cdec26a70b46e5b203c619" },
   "im-select.nvim": { "branch": "master", "commit": "630b4bfe1c71ca9947b2b437a52c0f60cc55208c" },
-  "lazy.nvim": { "branch": "main", "commit": "7e6c863bc7563efbdd757a310d17ebc95166cef3" },
+  "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "leetcode.nvim": { "branch": "master", "commit": "db7e1cd6b9191b34b4c1f2f96e4e3949cde9f951" },
   "lspsaga.nvim": { "branch": "main", "commit": "5fce15331ac6c3a3ec3ac91ab0e85ed82f5cbba0" },
   "lualine.nvim": { "branch": "master", "commit": "2a5bae925481f999263d6f5ed8361baef8df4f83" },
