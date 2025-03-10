@@ -28,6 +28,14 @@ return {
             },
             renderer = {
                 highlight_opened_files = "all", -- 高亮打开的文件
+                indent_markers = {
+                    enable = true,
+                    icons = {
+                        corner = "└ ", -- 修改拐角符号
+                        edge = "│ ", -- 修改边缘线符号
+                        none = "  ", -- 空白层级的占位符
+                    },
+                },
             },
             filters = {
                 dotfiles = false, -- 显示隐藏文件
