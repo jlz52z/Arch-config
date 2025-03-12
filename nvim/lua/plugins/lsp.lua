@@ -38,11 +38,10 @@ return {
                 keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- 跳转到上一个诊断
                 keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- 跳转到下一个诊断
                 keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<CR>", opts)   -- 打开符号大纲
-                keymap.set("n", "<leader>go", "<cmd>Lspsaga incoming_calls<CR>", opts)   -- 逆向追溯：谁调用了当前符号
-                keymap.set("n", "<leader>gi", "<cmd>Lspsaga outgoing_calls<CR>", opts)   -- 正向追踪：当前符号调用了谁
-                keymap.set("n", "<leader>o", "<cmd>Lspsaga peek_definition<CR>", opts)   -- 在浮动窗口中查看函数具体实现代码
-                keymap.set("n", "<leader>o", "<cmd>Lspsaga peek_type_definition<CR>", opts)   -- 在浮动窗口中查看类型系统的类型定义
-
+                keymap.set("n", "<leader>go", "<cmd>Lspsaga incoming_calls<CR>", opts) -- 逆向追溯：谁调用了当前符号
+                keymap.set("n", "<leader>gi", "<cmd>Lspsaga outgoing_calls<CR>", opts) -- 正向追踪：当前符号调用了谁
+                keymap.set("n", "<leader>gD", "<cmd>Lspsaga peek_definition<CR>", opts) -- 在浮动窗口中查看函数具体实现代码
+                keymap.set("n", "<leader>gR", "<cmd>Lspsaga peek_type_definition<CR>", opts) -- 在浮动窗口中查看类型系统的类型定义
             end
             -- Change the Diagnostic symbols in the sign column (gutter)
             -- (not in youtube nvim video)
@@ -118,7 +117,6 @@ return {
                         quit = "<ESC>",
                     },
                 },
-                
             })
             -- 在 lspsaga 配置中添加：
             -- require("lspsaga").setup({

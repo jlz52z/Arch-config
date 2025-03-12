@@ -8,22 +8,23 @@ return {
         "nvim-neotest/nvim-nio",
     },
     opt = true,
-    module = { "dap" },
-    requires = {
-        {
-            "theHamsta/nvim-dap-virtual-text",
-            module = { "nvim-dap-virtual-text" },
-        },
-        {
-            "rcarriga/nvim-dap-ui",
-            module = { "dapui" },
-        },
-        "nvim-telescope/telescope-dap.nvim",
-        {
-            "jbyuki/one-small-step-for-vimkind",
-            module = "osv",
-        },
-    },
+    -- 延迟加载，兼容packer.nvim配置
+    -- module = { "dap" },
+    -- requires = {
+    --     {
+    --         "theHamsta/nvim-dap-virtual-text",
+    --         module = { "nvim-dap-virtual-text" },
+    --     },
+    --     {
+    --         "rcarriga/nvim-dap-ui",
+    --         module = { "dapui" },
+    --     },
+    --     "nvim-telescope/telescope-dap.nvim",
+    --     {
+    --         "jbyuki/one-small-step-for-vimkind",
+    --         module = "osv",
+    --     },
+    -- },
     config = function()
         require("mason-nvim-dap").setup({
             ensure_installed = { "codelldb" },
