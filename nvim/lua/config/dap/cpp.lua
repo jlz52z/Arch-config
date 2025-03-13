@@ -26,10 +26,77 @@ function M.setup()
             type = "codelldb",
             request = "launch",
             program = function()
-                return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+                -- 智能查找可执行文件
+                local default_path
+                local build_dirs = { "build", "bin", "out", "cmake-build-debug" }
+
+                for _, dir in ipairs(build_dirs) do
+                    local path = vim.fn.getcwd() .. "/" .. dir
+                    if vim.fn.isdirectory(path) == 1 then
+                        default_path = path
+                        break
+                    end
+                end
+
+                default_path = default_path or vim.fn.getcwd()
+                return vim.fn.input("Path to executable: ", default_path .. "/", "file")
             end,
             cwd = "${workspaceFolder}",
             stopOnEntry = false,
+            args = function()
+                local args_str = vim.fn.input("Arguments: ")
+                local args = {}
+                for arg in string.gmatch(args_str, "%S+") do
+                    table.insert(args, arg)
+                end
+                return args
+            end,
+            env = function()
+                local env_str = vim.fn.input("Environment variables (KEY1=VALUE1,KEY2=VALUE2): ")
+                if env_str == "" then
+                    return nil
+                end
+
+                local env = {}
+                for pair in string.gmatch(env_str, "[^,]+") do
+                    local key, value = string.match(pair, "([^=]+)=(.*)")
+                    if key and value then
+                        env[key] = value
+                    end
+                end
+                return env
+            end,
+            showDisassembly = "auto",
+            sourceMaps = true,
+            console = "integratedTerminal",
+        },
+        {
+            name = "Attach to process",
+            type = "codelldb",
+            request = "attach",
+            pid = function()
+                local output = vim.fn.system("ps -e -o pid,comm | grep -v grep | sort -n")
+                local lines = vim.split(output, "\n")
+                local processes = {}
+                for _, line in ipairs(lines) do
+                    local pid, name = string.match(line, "%s*(%d+)%s+(.+)")
+                    if pid and name then
+                        table.insert(processes, { pid = pid, name = name })
+                    end
+                end
+
+                local choices = {}
+                for i, proc in ipairs(processes) do
+                    table.insert(choices, string.format("[%d] %s (%s)", i, proc.name, proc.pid))
+                end
+
+                local choice = vim.fn.inputlist({ "Select process to attach:", unpack(choices) })
+                if choice > 0 and choice <= #processes then
+                    return tonumber(processes[choice].pid)
+                end
+                return nil
+            end,
+            cwd = "${workspaceFolder}",
             showDisassembly = "auto",
             sourceMaps = true,
         },
