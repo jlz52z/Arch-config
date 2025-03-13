@@ -1,24 +1,30 @@
 local M = {}
 
 local function configure()
+	-- -- 设置断点图标和颜色
+	-- vim.api.nvim_set_hl(0, "DapBreakpoint", { fg = "#FF0000" })
+	-- vim.api.nvim_set_hl(0, "DapBreakpointCondition", { fg = "#FF9900" })
+	-- vim.api.nvim_set_hl(0, "DapLogPoint", { fg = "#00FF00" })
+	-- vim.api.nvim_set_hl(0, "DapStopped", { fg = "#00FFFF" })
 	local dap_breakpoint = {
 		breakpoint = {
-			text = "",
-			texthl = "LspDiagnosticsSignError",
+			text = "",
+			-- texthl = "LspDiagnosticsSignError",
+			texthl = "DiagnosticSignError",
 			linehl = "",
 			numhl = "",
 		},
 		rejected = {
-			text = "",
-			texthl = "LspDiagnosticsSignHint",
+			text = "",
+			texthl = "DiagnosticSignHint",
 			linehl = "",
 			numhl = "",
 		},
 		stopped = {
 			text = "",
-			texthl = "LspDiagnosticsSignInformation",
+			texthl = "DiagnosticSignInfo",
 			linehl = "DiagnosticUnderlineInfo",
-			numhl = "LspDiagnosticsSignInformation",
+			numhl = "DiagnosticSignInfo",
 		},
 	}
 
@@ -35,8 +41,8 @@ local function configure_exts()
 		highlight_new_as_changed = false, -- 将新变量视为已更改变量
 		show_stop_reason = true, -- 显示停止原因
 		commented = false, -- 在注释中显示虚拟文本
-		only_first_definition = true, -- 仅在第一次定义时显示虚拟文本
-		all_references = false, -- 在所有引用处显示虚拟文本
+		only_first_definition = false, -- 不仅在第一次定义时显示虚拟文本
+		all_references = true, -- 在所有引用处显示虚拟文本
 	})
 
 	local dap, dapui = require("dap"), require("dapui")
@@ -99,6 +105,7 @@ function M.setup()
 	configure_exts() -- Extensions
 	configure_debuggers() -- Debugger
 	require("config.dap.keymaps").setup() -- Keymaps
+	require("config.dap.cpp").setup()
 	require("dap.ext.vscode").load_launchjs(nil, { codelldb = { "c", "cpp", "rust" } })
 end
 
