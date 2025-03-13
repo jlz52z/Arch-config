@@ -99,7 +99,9 @@ return {
 			pickers = {
 				find_files = {
 					-- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
-					find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+					-- 默认情况下，rg 会忽略 .gitignore 文件中定义的目录和文件，或者一些常见的忽略目录（例如 .git、.vscode 等）。即使设置了 --hidden 参数，也不会显示被忽略的目录。
+					-- '--no-ignore' 参数会强制 rg 不再遵守 .gitignore 文件，从而显示所有隐藏文件夹
+					find_command = { "rg", "--files", "--hidden", "--no-ignore", "--glob", "!**/.git/*" },
 				},
 			},
 			extensions = {
