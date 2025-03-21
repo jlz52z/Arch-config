@@ -106,7 +106,7 @@ function M.setup()
 	configure_debuggers() -- Debugger
 	require("config.dap.keymaps").setup() -- Keymaps
 	require("config.dap.cpp").setup()
-	require("dap.ext.vscode").load_launchjs(nil, { codelldb = { "c", "cpp", "rust" } })
+	-- require("dap.ext.vscode").load_launchjs(nil, { codelldb = { "c", "cpp", "rust" } })
 end
 
 configure_debuggers()

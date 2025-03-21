@@ -20,6 +20,15 @@ function M.setup()
             -- detached = false,
         },
     }
+    -- 配置cppdbg适配器
+    dap.adapters.cppdbg = {
+        id = "cppdbg",
+        type = "executable",
+        command = vim.fn.expand("~/.local/share/nvim/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7"),
+        options = {
+            detached = false,
+        },
+    }
     dap.configurations.cpp = {
         {
             name = "Launch file",

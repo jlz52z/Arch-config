@@ -18,6 +18,10 @@ vim.keymap.set('v', '<S-j>', ":m '>+1<CR>gv=gv", { noremap = true, silent = true
 vim.keymap.set('v', '<S-k>', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
 
 
+vim.keymap.set("n", "<A-k>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
+vim.keymap.set("n", "<A-j>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
+vim.keymap.set("n", "<A-l>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
+vim.keymap.set("n", "<A-h>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
 
 -- Keymap
 local keymaps = {
@@ -34,8 +38,6 @@ local keymaps = {
     ["<leader>o"] = "<C-w>o",          -- Close all other windows
     ["<leader>+"] = "<C-w>+",          -- Increase window height
     ["<leader>-"] = "<C-w>-",          -- Decrease window height
-    ["<leader>>"] = "<C-w>>",          -- Increase window width
-    ["<leader><"] = "<C-w><",          -- Decrease window width
 
     -- Clear search highlight after pressing <Esc>
     ["<Esc>"] = ":nohlsearch<CR><Esc>",

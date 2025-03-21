@@ -120,15 +120,10 @@ export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
 # 以下是自己加的
 # ---------------------------------------------------
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
+source /usr/share/nvm/init-nvm.sh
 bindkey '\e[A' history-search-backward
 bindkey '\e[B' history-search-forward
-
-
-# fcitx5-remote -s keyboard-us
-export EDITOR=nvim
-export VISUAL=nvim
-# conda config --set auto_activate_base false
-
 
 export FORCE_THEME_UPDATE=true
 
@@ -177,9 +172,29 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+# alias cp="rsync -ahiv --progress --stats"
+alias memo="calcurse"
+
+# # 启用vim mode
+bindkey -v
+# # 减少 ESC 键延迟
+export KEYTIMEOUT=1
+# 在 Vi 模式下为 zsh-autosuggestions 设置快捷键
+# 插入模式下的绑定
+bindkey -M viins '^F' autosuggest-accept  # Ctrl+F 接受建议
+
+# 普通模式下的绑定
+bindkey -M vicmd 'L' autosuggest-accept   # 在普通模式下按 L 接受建议
+
+# 如果您想使用右箭头接受建议（这是默认行为）
+bindkey -M viins '^[[C' autosuggest-accept  # 右箭头
+bindkey -M vicmd '^[[C' autosuggest-accept  # 普通模式下的右箭头
+
+# 部分接受建议（接受到光标处）
+bindkey -M viins '^B' autosuggest-accept-line  # Ctrl+B 接受当前行的建议
+
 ## ---------------------------------------------------
 ## >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 eval $(thefuck --alias)
 alias lzd='lazydocker'
-source /usr/share/nvm/init-nvm.sh

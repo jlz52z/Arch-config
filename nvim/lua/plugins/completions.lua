@@ -2,12 +2,12 @@ return {
     {
         "hrsh7th/cmp-nvim-lsp",
     },
-    {
-            "zbirenbaum/copilot-cmp",
-            config = function()
-                require("copilot_cmp").setup()
-            end,
-    },
+    -- {
+    --         "zbirenbaum/copilot-cmp",
+    --         config = function()
+    --             require("copilot_cmp").setup()
+    --         end,
+    -- },
     {
         "L3MON4D3/LuaSnip",
         dependencies = { "saadparwaiz1/cmp_luasnip", "rafamadriz/friendly-snippets" },
@@ -117,11 +117,11 @@ return {
                     -- { name = "vsnip" }, -- For vsnip users.
                     -- { name = 'ultisnips' }, -- For ultisnips users.
                     -- { name = 'snippy' }, -- For snippy users.
-                    { name = "nvim_lsp" }, -- lsp
-                    { name = "luasnip" }, -- snippets
-                    { name = "buffer" }, -- text within current buffer
-                    { name = "path" }, -- file system paths
-                    { name = "copilot" },
+                    { name = "nvim_lsp", priority = 100 },
+                    { name = "luasnip",  priority = 90 },
+                    { name = "buffer",   priority = 70 },
+                    { name = "path",     priority = 50 },
+                    -- { name = "copilot", priority = 60 }, -- 按需启用
                 }),
             })
             -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
