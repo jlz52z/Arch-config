@@ -8,8 +8,7 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 plugins=( git sudo zsh-256color zsh-autosuggestions zsh-syntax-highlighting )
 source $ZSH/oh-my-zsh.sh
 
-# In case a command is not found, try to find the package that has it
-function command_not_found_handler {
+# In case a command is not found, try to find the package that has it function command_not_found_handler {
     local purple='\e[1;35m' bright='\e[0;1m' green='\e[1;32m' reset='\e[0m'
     printf 'zsh: command not found: %s\n' "$1"
     local entries=( ${(f)"$(/usr/bin/pacman -F --machinereadable -- "/usr/bin/$1")"} )
@@ -192,9 +191,15 @@ bindkey -M vicmd '^[[C' autosuggest-accept  # 普通模式下的右箭头
 
 # 部分接受建议（接受到光标处）
 bindkey -M viins '^B' autosuggest-accept-line  # Ctrl+B 接受当前行的建议
+alias nvidia-enable-with-audio='sudo virsh nodedev-reattach pci_0000_01_00_0 && sudo virsh nodedev-reattach pci_0000_01_00_1 && echo "GPU reattached (now host ready)" && sudo rmmod vfio_pci vfio_pci_core vfio_iommu_type1 && echo "VFIO drivers removed" && sudo modprobe -i nvidia_modeset nvidia_uvm nvidia nvidia_drm && systemctl --user restart pipewire.service &&echo "NVIDIA drivers added" && echo "COMPLETED!"'
+alias nvidia-enable='sudo virsh nodedev-reattach pci_0000_01_00_0 && echo "GPU reattached (now host ready)" && sudo rmmod vfio_pci vfio_pci_core vfio_iommu_type1 && echo "VFIO drivers removed" && sudo modprobe -i nvidia_modeset nvidia_drm nvidia_uvm nvidia && echo "NVIDIA drivers added" && echo "COMPLETED!"'
+alias nvidia-disable='sudo rmmod -f  nvidia_drm nvidia_modeset nvidia_uvm nvidia && echo "NVIDIA drivers removed" && sudo modprobe -i vfio_pci vfio_pci_core vfio_iommu_type1 && echo "VFIO drivers added" && sudo virsh nodedev-detach pci_0000_01_00_0 && echo "GPU detached (now vfio ready)" && echo "COMPLETED!"'
+
+echo 'eval "$(uv generate-shell-completion zsh)"' >> ~/.zshrc
 
 ## ---------------------------------------------------
 ## >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 eval $(thefuck --alias)
 alias lzd='lazydocker'
+eval "$(uv generate-shell-completion zsh)"

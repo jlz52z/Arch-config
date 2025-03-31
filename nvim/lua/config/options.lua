@@ -91,3 +91,30 @@ vim.wo.foldlevel = 99
 vim.cmd.colorscheme "catppuccin-macchiato"
 -- 设置窗口分界线颜色
 vim.cmd.hi("WinSeparator guifg=#2E3440")
+
+vim.api.nvim_create_autocmd({'DirChanged', 'VimEnter'}, {
+  pattern = '*',
+  callback = function()
+    -- 获取绝对路径并验证可执行文件
+    local venv_path = vim.fn.finddir('.venv', '.;')
+    if venv_path ~= '' then
+      venv_path = vim.fn.fnamemodify(venv_path, ':p')
+      local python_bin = venv_path .. '/bin/python'
+      
+      if vim.fn.executable(python_bin) == 1 then
+        vim.g.python3_host_prog = python_bin
+        -- 同步更新LSP配置
+        require('lspconfig').pyright.setup{
+          settings = {
+            python = {
+              pythonPath = python_bin
+            }
+          }
+        }
+        vim.notify("已激活虚拟环境: "..python_bin, vim.log.levels.INFO)
+      else
+        vim.notify("虚拟环境无效: "..python_bin, vim.log.levels.ERROR)
+      end
+    end
+  end
+})
