@@ -195,7 +195,6 @@ alias nvidia-enable-with-audio='sudo virsh nodedev-reattach pci_0000_01_00_0 && 
 alias nvidia-enable='sudo virsh nodedev-reattach pci_0000_01_00_0 && echo "GPU reattached (now host ready)" && sudo rmmod vfio_pci vfio_pci_core vfio_iommu_type1 && echo "VFIO drivers removed" && sudo modprobe -i nvidia_modeset nvidia_drm nvidia_uvm nvidia && echo "NVIDIA drivers added" && echo "COMPLETED!"'
 alias nvidia-disable='sudo rmmod -f  nvidia_drm nvidia_modeset nvidia_uvm nvidia && echo "NVIDIA drivers removed" && sudo modprobe -i vfio_pci vfio_pci_core vfio_iommu_type1 && echo "VFIO drivers added" && sudo virsh nodedev-detach pci_0000_01_00_0 && echo "GPU detached (now vfio ready)" && echo "COMPLETED!"'
 
-echo 'eval "$(uv generate-shell-completion zsh)"' >> ~/.zshrc
 
 ## ---------------------------------------------------
 ## >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
