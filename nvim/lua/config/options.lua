@@ -4,6 +4,7 @@ local set = vim.opt
 -- 设置剪贴板为系统剪贴板
 set.clipboard = "unnamedplus"
 
+
 -- 按键超时时间设置
 set.timeoutlen = 300 -- 映射序列的超时时间（300 毫秒）
 set.ttimeoutlen = 10 -- 终端模式下按键超时（10 毫秒）
@@ -70,8 +71,8 @@ vim.opt.undofile = true -- 等同于 set undofile
 -- 指定撤销文件存储目录
 vim.opt.undodir = os.getenv("HOME") .. "/config/nvim/undodir"
 
--- 始终显示 signcolumn，防止文本移动
-vim.opt.signcolumn = "yes"
+-- 始终显示 signcolumn，防止文本移动,以及gitsigns覆盖行号
+vim.opt.signcolumn = "yes" 
 
 -- 开启 Folding
 vim.wo.foldmethod = "expr"
@@ -89,9 +90,13 @@ vim.wo.foldlevel = 99
 -- 主题设置
 -- vim.cmd.colorscheme("tokyonight-moon")
 vim.cmd.colorscheme "catppuccin-macchiato"
+
 -- 设置窗口分界线颜色
 vim.cmd.hi("WinSeparator guifg=#2E3440")
+
+-- 设置diffview高亮颜色
 vim.api.nvim_set_hl(0, "DiffChange", { bg ="#47482b"})
+
 -- 在 normal/visual 模式下覆盖 d/c/x 操作
 vim.keymap.set({"n", "x"}, "d", [["_d]], { noremap = true })
 vim.keymap.set({"n", "x"}, "c", [["_c]], { noremap = true })
