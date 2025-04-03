@@ -92,6 +92,10 @@ vim.cmd.colorscheme "catppuccin-macchiato"
 -- 设置窗口分界线颜色
 vim.cmd.hi("WinSeparator guifg=#2E3440")
 vim.api.nvim_set_hl(0, "DiffChange", { bg ="#47482b"})
+-- 在 normal/visual 模式下覆盖 d/c/x 操作
+vim.keymap.set({"n", "x"}, "d", [["_d]], { noremap = true })
+vim.keymap.set({"n", "x"}, "c", [["_c]], { noremap = true })
+vim.keymap.set({'n', 'x'}, 'x', '"_x', { noremap = true })
 
 -- -- 设置python可执行文件路径，但是现在可以直接通过uv激活一个虚拟环境，不需要手动设置，故注释
 -- vim.api.nvim_create_autocmd({'DirChanged', 'VimEnter'}, {
