@@ -202,3 +202,4 @@ alias nvidia-disable='sudo rmmod -f  nvidia_drm nvidia_modeset nvidia_uvm nvidia
 eval $(thefuck --alias)
 alias lzd='lazydocker'
 eval "$(uv generate-shell-completion zsh)"
+eval "$(direnv hook zsh)"
