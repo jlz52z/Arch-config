@@ -14,7 +14,7 @@ return {
 	},
 	config = function()
 		local builtin = require("telescope.builtin")
-		vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
+		vim.keymap.set("n", "<leader>fu", "<cmd>Telescope undo<cr>")
 		vim.keymap.set("n", "<leader>ts", ":Telescope tmux sessions<CR>", { desc = "Tmux Sessions" })
 		vim.keymap.set("n", "<leader>tw", ":Telescope tmux windows<CR>", { desc = "Tmux Windows" })
 		vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find Files" })
