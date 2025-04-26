@@ -3,21 +3,32 @@ return {
         "williamboman/mason.nvim",
         event = "VeryLazy",
         config = function()
-            require("mason").setup()
+            require("mason").setup({
+                ensure_installed = { "goimports", "delve" },
+            })
         end,
     },
     {
         "williamboman/mason-lspconfig.nvim",
+        dependencies = {
+            "williamboman/mason.nvim",
+            "neovim/nvim-lspconfig", -- 也依赖于 lspconfig 本身
+        },
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "ts_ls", "clangd", "pyright" },
+                ensure_installed = { "gopls", "lua_ls", "ts_ls", "clangd", "pyright" },
+                automatic_installation = true,
             })
         end,
     },
     {
         "neovim/nvim-lspconfig",
         event = "VeryLazy",
-        dependencies = { "williamboman/mason-lspconfig.nvim" },
+        dependencies = {
+            "hrsh7th/cmp-nvim-lsp",
+            "williamboman/mason.nvim",  -- 显式依赖
+            "williamboman/mason-lspconfig.nvim", -- 显式依赖
+        },
         config = function()
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
             local lspconfig = require("lspconfig")
@@ -25,6 +36,7 @@ return {
             -- Define a shared on_attach function for all LSPs
             local on_attach = function(client, bufnr)
                 -- keybind options
+                -- go相关的lsp快捷键在go.lua中定义
                 local keymap = vim.keymap -- for conciseness
                 local opts = { noremap = true, silent = true, buffer = bufnr }
 
@@ -54,7 +66,7 @@ return {
             lspconfig.lua_ls.setup({
                 capabilities = capabilities,
                 on_attach = on_attach,
-                settings = { 
+                settings = {
                     Lua = {
                         diagnostics = {
                             globals = { "vim" }, -- 让 lua_ls 知道 vim 这个全局变量

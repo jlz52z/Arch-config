@@ -9,6 +9,12 @@
 
 [interactive]
     diffFilter = delta --color-only
+[diff]
+    renames = true
+    algorithm = histogram # 或 patience
+
+[status]
+    renames = true
 
 [delta]
     navigate = true  # use n and N to move between diff sections

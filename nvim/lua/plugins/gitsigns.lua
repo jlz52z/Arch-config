@@ -20,16 +20,16 @@ return {
                 untracked = { text = "┆" },
             },
             signs_staged_enable = true,
-            signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-            numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
-            linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
+            signcolumn = false, -- Toggle with `:Gitsigns toggle_signs`
+            numhl = true, -- Toggle with `:Gitsigns toggle_numhl`
+            linehl = true, -- Toggle with `:Gitsigns toggle_linehl`
             word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
             watch_gitdir = {
                 follow_files = true,
             },
             auto_attach = true,
             attach_to_untracked = false,
-            current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+            current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
             current_line_blame_opts = {
                 virt_text = true,
                 virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
@@ -52,5 +52,6 @@ return {
                 col = 1,
             },
         })
+        vim.keymap.set("n", "<leader>gl", require("gitsigns").toggle_word_diff, { desc = "Toggle word diff" })
     end,
 }

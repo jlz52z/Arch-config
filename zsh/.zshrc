@@ -196,10 +196,15 @@ alias nvidia-enable='sudo virsh nodedev-reattach pci_0000_01_00_0 && echo "GPU r
 alias nvidia-disable='sudo rmmod -f  nvidia_drm nvidia_modeset nvidia_uvm nvidia && echo "NVIDIA drivers removed" && sudo modprobe -i vfio_pci vfio_pci_core vfio_iommu_type1 && echo "VFIO drivers added" && sudo virsh nodedev-detach pci_0000_01_00_0 && echo "GPU detached (now vfio ready)" && echo "COMPLETED!"'
 
 
+# 解决uv run无法自动补全文件路径的问题
+function py() {
+    uv run $1
+}
 ## ---------------------------------------------------
 ## >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 eval $(thefuck --alias)
 alias lzd='lazydocker'
+alias lzg='lazygit'
 eval "$(uv generate-shell-completion zsh)"
 eval "$(direnv hook zsh)"

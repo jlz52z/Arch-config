@@ -94,13 +94,24 @@ vim.cmd.colorscheme "catppuccin-macchiato"
 -- 设置窗口分界线颜色
 vim.cmd.hi("WinSeparator guifg=#2E3440")
 
--- 设置diffview高亮颜色
-vim.api.nvim_set_hl(0, "DiffChange", { bg ="#47482b"})
+-- -- 设置diffview高亮颜色
+-- vim.api.nvim_set_hl(0, "DiffChange", { bg ="#47482b"})
 
 -- 在 normal/visual 模式下覆盖 d/c/x 操作
-vim.keymap.set({"n", "x"}, "d", [["_d]], { noremap = true })
-vim.keymap.set({"n", "x"}, "c", [["_c]], { noremap = true })
-vim.keymap.set({'n', 'x'}, 'x', '"_x', { noremap = true })
+-- vim.keymap.set({"n", "x", "v"}, "d", [["_d]], { noremap = true })
+-- vim.keymap.set({"n", "x", "v"}, "c", [["_c]], { noremap = true })
+-- vim.keymap.set({'n', 'x', "v"}, 'x', '"_x', { noremap = true })
+
+-- 黑洞寄存器映射（覆盖所有修改场景）
+local protected_ops = { "d", "c", "s", "x" }
+for _, op in ipairs(protected_ops) do
+  vim.keymap.set({"n", "v", "x"}, op, [["_]]..op, { noremap = true })
+end
+
+-- 安全粘贴映射
+vim.keymap.set("x", "p", [["_d"+P]], { noremap = true, silent = true })
+-- 该设置无法影响diffview.nvim 故注释
+-- vim.opt.diffopt:append { 'algorithm:histogram' }
 
 -- -- 设置python可执行文件路径，但是现在可以直接通过uv激活一个虚拟环境，不需要手动设置，故注释
 -- vim.api.nvim_create_autocmd({'DirChanged', 'VimEnter'}, {
