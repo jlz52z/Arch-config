@@ -193,3 +193,4 @@ setopt share_history
 source /home/garin/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fpath=(~/.zsh/plugins/zsh-completions/src $fpath)
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/bash-completion/completions/dkms

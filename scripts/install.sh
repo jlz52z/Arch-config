@@ -65,9 +65,9 @@ install_tmux() {
         echo "Warning: tmux is not installed"
         return 1
     fi
-    mkdir -p ~/.config/tmux/plugins/catppuccin
+    mkdir -p ~/.tmux/plugins/catppuccin
     mkdir -p ~/.tmux/resurrect
-    git clone -b v2.1.2 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin/tmux
+    git clone -b v2.1.3 https://github.com/catppuccin/tmux.git ~/.tmux/plugins/catppuccin/tmux
     ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 
     # 重新加载配置并自动安装插件
