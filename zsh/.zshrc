@@ -194,3 +194,5 @@ source /home/garin/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.
 fpath=(~/.zsh/plugins/zsh-completions/src $fpath)
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/bash-completion/completions/dkms
+setopt MENU_COMPLETE
+setopt AUTO_MENU
