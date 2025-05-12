@@ -5,6 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+
 # Detect AUR wrapper
 if pacman -Qi yay &>/dev/null; then
    aurhelper="yay"
@@ -201,7 +202,7 @@ alias lzd='lazydocker'
 alias lzg='lazygit'
 eval "$(uv generate-shell-completion zsh)"
 eval "$(direnv hook zsh)"
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+source ~/.zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
 
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
@@ -211,10 +212,11 @@ setopt inc_append_history
 setopt extended_history
 setopt share_history
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source /home/garin/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fpath=(~/.zsh/plugins/zsh-completions/src $fpath)
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/bash-completion/completions/dkms
 source ~/config/zsh/completion.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
