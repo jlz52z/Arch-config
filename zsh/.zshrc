@@ -220,3 +220,37 @@ source ~/config/zsh/completion.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+cp2share() {
+    local fixed_destination_dir="/srv/samba/myshare/" # 固定的本地目标目录
+    # 检查是否提供了源文件/目录
+    if [[ "$#" -eq 0 ]]; then
+        echo "用法: cp2share [CP_OPTIONS] <source_file_or_dir_1> [<source_file_or_dir_2> ...]" >&2
+        echo "示例: cp2share myfile.txt" >&2
+        echo "       cp2share -r my_directory" >&2
+        return 1
+    fi
+    # 确保目标目录存在 (如果不存在则尝试创建)
+    if [[ ! -d "$fixed_destination_dir" ]]; then
+        echo "信息: 目标目录 '$fixed_destination_dir' 不存在，尝试创建..."
+        if ! mkdir -p "$fixed_destination_dir"; then
+            echo "错误: 无法创建目标目录 '$fixed_destination_dir'。请检查权限或手动创建。" >&2
+            return 1
+        fi
+        echo "信息: 目标目录 '$fixed_destination_dir' 已成功创建。"
+    fi
+    echo "正在将 '$*' 复制到: ${fixed_destination_dir}"
+    command cp -- "$@" "$fixed_destination_dir"
+    # 检查 cp 命令的退出状态
+    local exit_status=$?  # <--- 修改点：变量名从 status 改为 exit_status
+    if [[ $exit_status -eq 0 ]]; then # <--- 修改点
+        echo "复制成功。"
+    else
+        echo "复制失败 (cp 命令退出码: $exit_status)。请检查错误信息和权限。" >&2 # <--- 修改点
+    fi
+    return $exit_status # <--- 修改点
+}
+export PATH=/home/garin/.local/bin:$PATH
+export PATH="/home/garin/config/scripts:$PATH"
+export VISUAL="nvim"
+export EDITOR="nvim"
