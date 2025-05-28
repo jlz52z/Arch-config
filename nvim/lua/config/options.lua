@@ -27,8 +27,9 @@ set.hlsearch = true -- 高亮搜索结果
 set.incsearch = true -- 增量搜索
 
 -- 窗口分割行为
-set.splitbelow = true -- 新窗口从下方打开
-set.splitright = true -- 新窗口从右侧打开
+-- 会导致nvim-dap-ui的集成终端无法正常工作，见https://github.com/rcarriga/nvim-dap-ui/issues/424
+-- set.splitbelow = true -- 新窗口从下方打开
+-- set.splitright = true -- 新窗口从右侧打开
 
 -- 性能优化
 set.lazyredraw = true -- 禁用实时重绘，提高性能

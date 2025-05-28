@@ -27,7 +27,7 @@ return {
     -- },
     config = function()
         require("mason-nvim-dap").setup({
-            ensure_installed = { "codelldb" },
+            ensure_installed = { "codelldb", "delve" },
             automatic_installation = true,
         })
         -- config/dap/init.lua 中的 M.setup() 函数

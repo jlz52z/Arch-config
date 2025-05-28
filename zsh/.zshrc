@@ -152,7 +152,7 @@ alias findf="find . -type f | fzf --preview 'cat {}'"
 alias cdf='cd "$(find . -type d | fzf --preview "ls -l {}")"'
 
 # Set up zoxide
-eval "$(zoxide init zsh)"
+eval "$(zoxide init --cmd cd zsh)"
 alias nano='nvim'
 alias snvim="sudo -E nvim"
 # yazi wrapper
