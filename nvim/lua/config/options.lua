@@ -19,7 +19,9 @@ set.tabstop = 4 -- Tab 显示为 4 个空格
 set.shiftwidth = 4 -- 缩进时使用 4 个空格
 set.expandtab = true -- 将 Tab 转为空格
 set.smartindent = true -- 启用智能缩进
-
+-- 按 Tab 键时，光标移动的空格数 (软 Tab)
+-- 如果 expandtab 为 true, 按 Tab 会插入 softtabstop 个空格
+vim.opt.softtabstop = 4
 -- 搜索设置
 set.ignorecase = true -- 搜索时忽略大小写
 set.smartcase = true -- 当搜索包含大写字符时，自动启用大小写敏感
@@ -115,30 +117,13 @@ vim.keymap.set("x", "p", [["_d"+P]], { noremap = true, silent = true })
 -- 该设置无法影响diffview.nvim 故注释
 -- vim.opt.diffopt:append { 'algorithm:histogram' }
 
--- -- 设置python可执行文件路径，但是现在可以直接通过uv激活一个虚拟环境，不需要手动设置，故注释
--- vim.api.nvim_create_autocmd({'DirChanged', 'VimEnter'}, {
---   pattern = '*',
---   callback = function()
---     -- 获取绝对路径并验证可执行文件
---     local venv_path = vim.fn.finddir('.venv', '.;')
---     if venv_path ~= '' then
---       venv_path = vim.fn.fnamemodify(venv_path, ':p')
---       local python_bin = venv_path .. '/bin/python'
---       
---       if vim.fn.executable(python_bin) == 1 then
---         vim.g.python3_host_prog = python_bin
---         -- 同步更新LSP配置
---         require('lspconfig').pyright.setup{
---           settings = {
---             python = {
---               pythonPath = python_bin
---             }
---           }
---         }
---         vim.notify("已激活虚拟环境: "..python_bin, vim.log.levels.INFO)
---       else
---         vim.notify("虚拟环境无效: "..python_bin, vim.log.levels.ERROR)
---       end
---     end
---   end
--- })
+vim.opt.list = true -- 开启 list 模式以显示特殊字符
+vim.opt.listchars = {
+  tab = '→ ',       -- 将 Tab 显示为一个右三角箭头后跟一个空格 (你可以选择其他字符，如 '» ', '→ ', '▎ ')
+  space = '·',      -- 将 Space 显示为一个中间点 (如果你不想高亮所有空格，可以注释掉或移除这行)
+  trail = '▫',      -- 将行尾空格显示为一个空心方块 (或其他你喜欢的字符)
+  extends = '⟩',    -- 长行超出屏幕时行尾的指示符
+  precedes = '⟨',   -- 长行超出屏幕时行首的指示符
+  nbsp = '␣',       -- 不间断空格
+  -- eol = '¬',     -- 可选：显示换行符，通常不太需要
+}
