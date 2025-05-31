@@ -258,9 +258,10 @@ return {
                     },
 
                     mapping = {
-                        ["<BS>"] = cmp.mapping(function(_fallback)
-                            smart_bs()
-                        end, { "i", "s" }),
+                        -- 会影响autopairs智能删除配对符号
+                        -- ["<BS>"] = cmp.mapping(function(_fallback)
+                        --     smart_bs()
+                        -- end, { "i", "s" }),
 
                         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
 

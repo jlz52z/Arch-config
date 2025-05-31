@@ -127,3 +127,4 @@ vim.opt.listchars = {
   nbsp = '␣',       -- 不间断空格
   -- eol = '¬',     -- 可选：显示换行符，通常不太需要
 }
+-- vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })

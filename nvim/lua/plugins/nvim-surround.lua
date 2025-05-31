@@ -7,7 +7,7 @@ return {
             -- Configuration here, or leave empty to use defaults
             move_cursor = false, --  可以改为 "end" 或 "begin"
     keymaps = {
-        visual = "<leader>s",
+        visual = "gs",
     },
         })
     end,

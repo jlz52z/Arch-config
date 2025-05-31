@@ -28,19 +28,26 @@ local function configure()
 			linehl = "DiagnosticUnderlineInfo",
 			numhl = "DiagnosticSignInfo",
 		},
+		dap_breakpointcondition = {
+			text = "",
+			texthl = "DiagnosticSignWarn",
+			linehl = "",
+			numhl = "debugBreakpoint",
+		},
 	}
 
-    -- 该函数已经被废弃
+	-- 该函数已经被废弃
 	vim.fn.sign_define("DapBreakpoint", dap_breakpoint.breakpoint)
-    vim.fn.sign_define("DapStopped", dap_breakpoint.stopped)
-    vim.fn.sign_define("DapBreakpointRejected", dap_breakpoint.rejected)
--- vim.diagnostic.config({
---   signs = {
---     DapBreakpoint = dap_breakpoint.breakpoint,
---     DapStopped = dap_breakpoint.stopped,
---     DapBreakpointRejected = dap_breakpoint.rejected
---   }
--- })
+	vim.fn.sign_define("DapStopped", dap_breakpoint.stopped)
+	vim.fn.sign_define("DapBreakpointRejected", dap_breakpoint.rejected)
+	vim.fn.sign_define("DapBreakpointCondition", dap_breakpoint.dap_breakpointcondition)
+	-- vim.diagnostic.config({
+	--   signs = {
+	--     DapBreakpoint = dap_breakpoint.breakpoint,
+	--     DapStopped = dap_breakpoint.stopped,
+	--     DapBreakpointRejected = dap_breakpoint.rejected
+	--   }
+	-- })
 end
 
 local function configure_exts()
