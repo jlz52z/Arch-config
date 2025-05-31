@@ -254,5 +254,5 @@ export PATH=/home/garin/.local/bin:$PATH
 export PATH="/home/garin/config/scripts:$PATH"
 export VISUAL="nvim"
 export EDITOR="nvim"
-# 解决F1按键在kitty中总是在命令行输出‘P’的问题（F1快捷键用于snipaste）
+# 解决F1按键在kitty中总是在命令行输出‘P’的问题（F1快捷键用于snipaste）仅用于kitty，因为别的终端模拟器可能不会发送\eOP序列
 bindkey -s '\eOP' ''
