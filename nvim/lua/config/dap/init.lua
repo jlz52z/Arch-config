@@ -8,7 +8,7 @@ local function configure()
 	-- vim.api.nvim_set_hl(0, "DapStopped", { fg = "#00FFFF" })
 	local dap_breakpoint = {
 		breakpoint = {
-			text = "",
+			text = "",
 			-- texthl = "LspDiagnosticsSignError",
 			texthl = "DiagnosticSignError",
 			-- linehl = "",
@@ -17,7 +17,7 @@ local function configure()
 			numhl = "DebugNumberHighlight", -- 行号高亮（可选）
 		},
 		rejected = {
-			text = "",
+			text = "󰚦",
 			texthl = "DiagnosticSignHint",
 			linehl = "",
 			numhl = "",
@@ -29,18 +29,19 @@ local function configure()
 			numhl = "DiagnosticSignInfo",
 		},
 		dap_breakpointcondition = {
-			text = "",
+			text = "󰃤",
 			texthl = "DiagnosticSignWarn",
 			linehl = "",
 			numhl = "debugBreakpoint",
 		},
+        dap_logPoint ={ text = "󰌑", texthl = "DapLogPoint", linehl = "", numhl = "" },
 	}
-
 	-- 该函数已经被废弃
 	vim.fn.sign_define("DapBreakpoint", dap_breakpoint.breakpoint)
 	vim.fn.sign_define("DapStopped", dap_breakpoint.stopped)
 	vim.fn.sign_define("DapBreakpointRejected", dap_breakpoint.rejected)
 	vim.fn.sign_define("DapBreakpointCondition", dap_breakpoint.dap_breakpointcondition)
+	vim.fn.sign_define("DapLogPoint", dap_breakpoint.breakpoint)
 	-- vim.diagnostic.config({
 	--   signs = {
 	--     DapBreakpoint = dap_breakpoint.breakpoint,
