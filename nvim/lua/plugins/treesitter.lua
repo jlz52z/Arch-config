@@ -26,11 +26,15 @@ return {
                     "gomod",
                     "gowork",
                     "gosum",
-                    "gotmpl"
+                    "gotmpl",
                 },
                 auto_install = true,
                 highlight = { enable = true },
-                indent = { enable = true },
+                indent = {
+                    enable = true,
+                    --在c/cpp中存在缩进问题，故禁用（函数的{}不与函数对齐，而是被放在了顶格）
+                    disable = { "c", "cpp" },
+                },
                 -- 可选: Treesitter 文本对象 (需要 nvim-treesitter-textobjects)
                 textobjects = {
                     select = {

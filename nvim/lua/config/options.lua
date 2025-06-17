@@ -12,7 +12,7 @@ set.ttimeoutlen = 10 -- 终端模式下按键超时（10 毫秒）
 -- 行号和光标设置
 set.number = true -- 显示行号
 set.relativenumber = true -- 显示相对行号
-set.cursorline = true -- 高亮当前行
+-- set.cursorline = true -- 高亮当前行
 
 -- 缩进设置
 set.tabstop = 4 -- Tab 显示为 4 个空格
@@ -128,3 +128,16 @@ vim.opt.listchars = {
   -- eol = '¬',     -- 可选：显示换行符，通常不太需要
 }
 -- vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+-- -- 设置 Neovim 背景为透明
+-- -- Normal: 正常模式下的背景
+-- -- NormalNC: 非当前窗口 (Non-Current) 的背景
+-- vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+-- vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
+-- -- 为了获得更好的效果，你可能还需要将其他一些UI元素的背景也设为透明
+-- -- 例如：行号、符号列、浮动窗口等
+-- vim.api.nvim_set_hl(0, 'LineNr', { bg = 'none' })
+-- vim.api.nvim_set_hl(0, 'SignColumn', { bg = 'none' })
+-- vim.api.nvim_set_hl(0, 'EndOfBuffer', { bg = 'none' })
+-- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' }) -- 浮动窗口背景
+-- vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' }) -- 浮动窗口边框
+-- vim.api.nvim_set_hl(0, 'MsgArea', { bg = 'none' }) -- 消息区域
