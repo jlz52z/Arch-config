@@ -104,3 +104,15 @@ zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f
 # ## For kubernetes
 # source $DOTFILES/zsh/plugins/kubectl-completion/_kubectl
 # zstyle ':completion:*:*:kubectl:*' list-grouped false
+# ①　取消一次 Tab 就直接选中的行为
+unsetopt MENU_COMPLETE          # ← 把原来的 setopt MENU_COMPLETE 删掉或改成 unsetopt
+
+# ②　第一次 Tab 时若有歧义就列出候选并保留前缀
+setopt AUTO_LIST                # 你原来就开着，保留
+setopt LIST_AMBIGUOUS           # 只有真的歧义时才列出，避免无用列表（可选）
+
+# ③　第二次 Tab 自动进入菜单选取模式（首项高亮）
+setopt AUTO_MENU                # 没开的话加上
+
+# ④　保持菜单里的方向键映射
+zstyle ':completion:*' menu select   # 仍然需要，让 menuselect 生效

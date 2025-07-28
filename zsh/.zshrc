@@ -138,7 +138,6 @@ alias v='nvim'
 # fzf
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
-
 export FZF_DEFAULT_COMMAND='fd --type f --color=never --hidden'
 export FZF_DEFAULT_OPTS='--no-height --color=bg+:#343d46,gutter:-1,pointer:#ff3c3c,info:#0dbc79,hl:#0dbc79,hl+:#23d18b'
 
@@ -252,6 +251,7 @@ cp2share() {
 }
 export PATH=/home/garin/.local/bin:$PATH
 export PATH="/home/garin/config/scripts:$PATH"
+export PATH=/home/garin/go/bin:$PATH
 export VISUAL="nvim"
 export EDITOR="nvim"
 # 解决F1按键在kitty中总是在命令行输出‘P’的问题（F1快捷键用于snipaste）仅用于kitty，因为别的终端模拟器可能不会发送\eOP序列
