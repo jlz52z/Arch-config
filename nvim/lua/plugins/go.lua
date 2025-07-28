@@ -76,16 +76,16 @@ return {
 			lsp_semantic_tokens = true, -- 启用语义高亮 (需要主题支持)
 			lsp_inlay_hints = { -- 内联提示 (需要 gopls >= v0.9.0 & Nvim >= 0.10 效果最佳)
 				enable = true,
-				-- -- 下面的选项需要更新的 gopls 和 Nvim nightly 可能才支持得好
-				-- parameter_hints = { enable = true },
-				-- type_hints = { enable = true },
-				-- variable_types = { enable = true },
-				-- range_variable_types = { enable = true },
-				-- constant_values = { enable = true },
-				-- function_return_types = { enable = true },
-				-- composite_literal_fields = { enable = true },
-				-- composite_literal_types = { enable = true },
-				-- show_implicit_equals_in_range = true,
+				-- 下面的选项需要更新的 gopls 和 Nvim nightly 可能才支持得好
+				parameter_hints = { enable = true },
+				type_hints = { enable = true },
+				variable_types = { enable = true },
+				range_variable_types = { enable = true },
+				constant_values = { enable = true },
+				function_return_types = { enable = true },
+				composite_literal_fields = { enable = true },
+				composite_literal_types = { enable = true },
+				show_implicit_equals_in_range = true,
 			},
 
 			-- ========== Formatting ==========
