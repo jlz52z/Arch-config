@@ -122,16 +122,16 @@ vim.keymap.set("x", "p", [["_d"+P]], { noremap = true, silent = true })
 -- 该设置无法影响diffview.nvim 故注释
 -- vim.opt.diffopt:append { 'algorithm:histogram' }
 
-vim.opt.list = true -- 开启 list 模式以显示特殊字符
-vim.opt.listchars = {
-  tab = '→ ',       -- 将 Tab 显示为一个右三角箭头后跟一个空格 (你可以选择其他字符，如 '» ', '→ ', '▎ ')
-  space = '·',      -- 将 Space 显示为一个中间点 (如果你不想高亮所有空格，可以注释掉或移除这行)
-  trail = '▫',      -- 将行尾空格显示为一个空心方块 (或其他你喜欢的字符)
-  extends = '⟩',    -- 长行超出屏幕时行尾的指示符
-  precedes = '⟨',   -- 长行超出屏幕时行首的指示符
-  nbsp = '␣',       -- 不间断空格
-  -- eol = '¬',     -- 可选：显示换行符，通常不太需要
-}
+-- vim.opt.list = true -- 开启 list 模式以显示特殊字符
+-- vim.opt.listchars = {
+--   tab = '→ ',       -- 将 Tab 显示为一个右三角箭头后跟一个空格 (你可以选择其他字符，如 '» ', '→ ', '▎ ')
+--   space = '·',      -- 将 Space 显示为一个中间点 (如果你不想高亮所有空格，可以注释掉或移除这行)
+--   trail = '▫',      -- 将行尾空格显示为一个空心方块 (或其他你喜欢的字符)
+--   extends = '⟩',    -- 长行超出屏幕时行尾的指示符
+--   precedes = '⟨',   -- 长行超出屏幕时行首的指示符
+--   nbsp = '␣',       -- 不间断空格
+--   -- eol = '¬',     -- 可选：显示换行符，通常不太需要
+-- }
 -- vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- -- 设置 Neovim 背景为透明
 -- -- Normal: 正常模式下的背景

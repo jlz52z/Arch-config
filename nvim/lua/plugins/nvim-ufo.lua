@@ -4,12 +4,13 @@ return {
 	event = "VeryLazy",
 	opts = {
 		-- INFO: Uncomment to use treeitter as fold provider, otherwise nvim lsp is used
-		-- provider_selector = function(bufnr, filetype, buftype)
-		--   return { "treesitter", "indent" }
-		-- end,
+		provider_selector = function(bufnr, filetype, buftype)
+			return { "treesitter", "indent" }
+		end,
 		open_fold_hl_timeout = 400,
-		-- close_fold_kinds = { "imports", "comment" },
-       close_fold_kinds_for_ft = { default = {'imports', 'comment'}, },
+		-- for lsp provider
+		-- close_fold_kinds_for_ft = { default = {'imports', 'comment'}, },
+		close_fold_kinds_for_ft = { default = { "import_declaration", "function_declaration", "type_declaration" } },
 
 		preview = {
 			win_config = {
@@ -76,5 +77,8 @@ return {
 				vim.cmd([[ Lspsaga hover_doc ]])
 			end
 		end)
+		vim.keymap.set("n", "z1", function()
+			require("ufo").closeFoldsWith(1) -- 0 = 全关，1 = 只留顶层
+		end, { desc = "Fold to top-level" })
 	end,
 }
