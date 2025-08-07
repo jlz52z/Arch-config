@@ -1,6 +1,6 @@
 return {
     "ray-x/lsp_signature.nvim",
-    event = "VeryLazy", -- 或者 "InsertEnter"，在进入插入模式时加载
+    event = "VeryLazy",
     opts = {
 
         debug = false,                                        -- set to true to enable debug logging
@@ -83,7 +83,7 @@ return {
         -- it can be function that set keymaps
         -- e.g. keymaps = { { 'j', '<C-o>j' }, } this map j to <C-o>j in floating window
         -- <M-d> and <M-u> are default keymaps to move cursor up and down
-    }, -- 在这里放置你的配置
+    },
     config = function(_, opts)
         require("lsp_signature").setup(opts)
     end,

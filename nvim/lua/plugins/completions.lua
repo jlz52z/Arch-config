@@ -29,7 +29,17 @@ return {
                     ls.jump(-1)
                 end
             end, { silent = true })
+            require("luasnip").config.set_config({
+                enable_autosnippets = true,
+                store_selection_keys = "`",
+            })
+
             require("luasnip.loaders.from_lua").load({ paths = "~/config/nvim/lua/config/snippets" })
+            local auto_expand = require("luasnip").expand_auto
+            require("luasnip").expand_auto = function(...)
+                vim.o.undolevels = vim.o.undolevels
+                auto_expand(...)
+            end
         end,
     },
     {
