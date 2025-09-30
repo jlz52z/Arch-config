@@ -58,7 +58,16 @@ return {
 			-- case_insensitive_regex: sets regex case sensitivity
 			case_insensitive_regex = false,
 			-- disable_keymaps: disable default keymaps
-			disable_keymaps = false,
+			disable_keymaps = true,
 		})
+		vim.keymap.set("n", "]r", function()
+			require("illuminate").goto_next_reference(true)
+		end)
+		vim.keymap.set("n", "[r", function()
+			require("illuminate").goto_prev_reference(true)
+		end)
+		vim.keymap.set({ "x", "o" }, "ir", function()
+			require("illuminate").textobj_select()
+		end)
 	end,
 }
