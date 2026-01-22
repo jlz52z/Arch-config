@@ -6,6 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 
+
 # Detect AUR wrapper
 if pacman -Qi yay &>/dev/null; then
    aurhelper="yay"
@@ -100,11 +101,11 @@ export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
 # if [ $? -eq 0 ]; then
 #     eval "$__conda_setup"
 # else
-    if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/opt/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/miniconda3/bin:$PATH"
-    fi
+#    if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
+#        . "/opt/miniconda3/etc/profile.d/conda.sh"
+#    else
+#        export PATH="/opt/miniconda3/bin:$PATH"
+#    fi
 # fi
 # unset __conda_setup
 # <<< conda initialize <<<
@@ -113,6 +114,10 @@ export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
 # 以下是自己加的
 # ---------------------------------------------------
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+xhost +local:root > /dev/null 2>&1
+
+
 export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
 source /usr/share/nvm/init-nvm.sh
 bindkey '\e[A' history-search-backward
@@ -201,7 +206,6 @@ alias lzd='lazydocker'
 alias lzg='lazygit'
 eval "$(uv generate-shell-completion zsh)"
 eval "$(direnv hook zsh)"
-source ~/.zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
 
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
@@ -210,8 +214,10 @@ setopt appendhistory
 setopt inc_append_history
 setopt extended_history
 setopt share_history
+setopt autocd beep extendedglob notify
 
-source /home/garin/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
+source /home/urie/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fpath=(~/.zsh/plugins/zsh-completions/src $fpath)
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/bash-completion/completions/dkms
@@ -249,10 +255,8 @@ cp2share() {
     fi
     return $exit_status # <--- 修改点
 }
-export PATH=/home/garin/.local/bin:$PATH
-export PATH="/home/garin/config/scripts:$PATH"
-export PATH=/home/garin/go/bin:$PATH
+export PATH=/home/urie/.local/bin:$PATH
+export PATH="/home/urie/config/scripts:$PATH"
+export PATH=/home/urie/go/bin:$PATH
 export VISUAL="nvim"
 export EDITOR="nvim"
-# 解决F1按键在kitty中总是在命令行输出‘P’的问题（F1快捷键用于snipaste）仅用于kitty，因为别的终端模拟器可能不会发送\eOP序列
-bindkey -s '\eOP' ''
