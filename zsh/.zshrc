@@ -139,6 +139,7 @@ nvim() {
     fi
 }
 alias v='nvim'
+alias mv='mv -i'
 
 # fzf
 # Set up fzf key bindings and fuzzy completion
